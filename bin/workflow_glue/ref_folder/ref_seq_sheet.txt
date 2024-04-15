@@ -1,0 +1,1 @@
+barcode01	/mnt/c/Users/micks/Desktop/HES24/EPI2ME_pipeline_MS/installed_version/repo_clone/bin/workflow_glue/ref_folder/ref_1.fasta

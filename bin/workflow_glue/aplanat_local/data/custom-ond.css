@@ -1,0 +1,234 @@
+:root {
+    /* OND blue */
+    --brand-primary: #003E71;
+    --brand-primary-m: #003e71a6;
+    --brand-primary-l: #003e7136;
+
+    /* ONT secondary blue  */
+    --brand-secondary: #90C6E7;
+
+    /* ONT tertiary blue */
+    --brand-tertiary: #006271;
+
+    /* ONT black */
+    --brand-black: #333333;
+
+    /* ONT grey */
+    --brand-grey: #666666;
+    --brand-grey-l: #6666661f;
+
+    /* ONT dark grey */
+    --brand-dark-grey: #455560;
+
+    /* ONT light grey */
+    --brand-light-grey: #B5AEA7;
+
+    /* Red */
+    --brand-red: #f45b69;
+    --brand-red-m: #f45b69a6;
+
+    /* Green */
+    --brand-green: #8FC93A;
+
+    /* Pink */
+    --brand-pink: #A60067;
+
+}
+
+/* For printing */
+
+@media print {
+    .navbar {
+        display: block;
+        border-width:0 !important;
+    }
+    .navbar-toggle {
+        display:none;
+    }
+}
+
+
+body {
+  font-family: 'Arial', sans-serif;!important
+}
+
+/* Navigation */
+
+.navbar-branded{
+  color: #FFFFFF;
+  background-color: var(--brand-primary);
+  border: none;
+  border-radius: 0;
+}
+
+/* Text */
+
+strong {
+  font-family:'Arial';
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+.sticker {
+  border: 1px solid var(--brand-black);
+  padding: 2px;
+  border-radius: 1px;
+  margin: 5px;
+  font-weight: 400;
+}
+
+.sticker-white {
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  padding: 2px;
+  border-radius: 1px;
+  margin: 5px;
+  font-weight: 400;
+}
+
+/* Forms */
+
+.form-control:focus {
+  border-color: var(--brand-primary);
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+
+input[type='checkbox']{
+  width: 20px !important;
+  height: 20px !important;
+  margin: 5px;
+  box-shadow: none;
+  font-size: 2em;
+  accent-color: var(--brand-primary);
+}
+
+.badge {
+  border-radius: 0; !important
+}
+
+.card {
+  border-radius: 0; !important
+}
+
+.badge-brand-info {
+  background-color: var(--brand-secondary);
+  color: #ffffff;
+}
+
+.badge-brand-primary {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+.badge-brand-red {
+  background-color: var(--brand-red);
+  color: #ffffff;
+}
+
+.badge-brand-light-grey {
+  background-color: var(--brand-light-grey);
+  color: #ffffff;
+}
+
+.badge-white {
+  background-color: #ffffff;
+  color: var(--brand-primary);
+}
+
+.text-brand-primary {
+  color: var(--brand-primary);
+}
+
+.bg-brand-primary {
+  color: #ffffff;
+  background-color: var(--brand-primary-m)
+}
+
+.bg-brand-red {
+  color: #ffffff;
+  background-color: var(--brand-red-m)
+}
+
+.bg-brand-grey {
+  color: #ffffff;
+  background-color: var(--brand-grey)
+}
+
+/* Alerts */
+
+.alert a {
+    color: #FFFFFF;
+}
+
+.alert a:hover {
+    color: #FFFFFF;
+}
+
+.alert-success {
+    border-color: var(--brand-primary);
+    background-color: var(--brand-primary);
+    color: #FFFFFF;
+    border-radius: 0rem;
+}
+
+.alert-danger {
+    border-color: var(--brand-red);
+    background-color: var(--brand-red);
+    color: #ffffff;
+    border-radius: 0rem;
+
+}
+
+.alert-brand-red {
+    border-color: var(--brand-red);
+    background-color: var(--brand-red);
+    color: #ffffff;
+    border-radius: 0rem;
+
+}
+
+.alert-brand-primary {
+    border-color: var(--brand-primary);
+    background-color: var(--brand-primary);
+    color: #ffffff;
+    border-radius: 0rem;
+
+}
+
+.alert-brand-primary-l {
+    border-color: var(--brand-primary-l);
+    background-color: var(--brand-primary-l);
+    color: #ffffff;
+    border-radius: 0rem;
+
+}
+
+.alert-brand-grey {
+    border-color: var(--brand-grey);
+    background-color: var(--brand-grey);
+    color: #ffffff;
+    border-radius: 0rem;
+}
+
+.alert-brand-light-grey {
+    border-color: var(--brand-light-grey));
+    background-color: var(--brand-light-grey);
+    color: #ffffff;
+    border-radius: 0rem;
+}
+
+/* Tables */
+
+.td-brand-primary {
+  border-color: var(--brand-primary);
+  background-color: var(--brand-primary-l);
+}
+
+.td-brand-grey {
+  border-color: var(--brand-grey);
+  background-color: var(--brand-grey-l);
+}
