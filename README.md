@@ -9,7 +9,7 @@ Note that it is no longer the most recent version, and important differences hav
 The main modifications introduced to this initial workflow (v0.3.1) are presented below.
 
 
-## GENERAL USAGE
+# GENERAL USAGE
 
 
 The installation of nextflow and its dependencies can be tested using this command:
@@ -52,9 +52,9 @@ WARNING: If a ref_seq_sheet is given but no corresponding sample ID is found, re
 All output files are generated in the directory where the command was executed, separated in a different subdirectory for each barcode.
 
 
-## PRINCIPAL MODIFICATIONS
+# PRINCIPAL MODIFICATIONS
 
-### Generation of an annotation file in genbank format
+## Generation of an annotation file in genbank format
 
 A function fa2gbk() was added in the run_plannotate python script at line 65 and called line 150 of the same document
 
@@ -63,21 +63,21 @@ position:
 
 This function takes as input the fasta file and the annotation bed file of a sample (barcode) and returns the annotation contained in the bed file in a genbank format. the gbk file is generated in the same output directory as all other output files.
 
-### Variant calling process
+## Variant calling process
 
 Four processes were added in main.nf (for variant calling and VCF filtering with Sniffles and Medaka) and are called in the workflow pipeline { } part.If neither --ref_seq_sheet or --ref_seq is used, the process is not called and variant calling does not happen (but a path channel is still generated, pointing to "$projectDir/data/OPTIONAL_FILE" to avoid the workflow to stop.
 
 position:
  	/EPI2ME_pipeline/repo_clone/main.nf
 
-### Feature table
+## Feature table
 
 A SplitFeatureTable{} process was added in main.nf to allow splitting the output of the PLannotate process (one huge feature table) into different csv files for each barcodes, later generated in the corresponding subdirectory.
 
 position:
  	/EPI2ME_pipeline/repo_clone/main.nf
 
-### File output
+## File output
 
 The output{} process was modified to create a subdirectory for each barcode and generate there only .gbk / .fasta / .html and .vcf files
 All other files are generated in an annex subdirectory called "other", with all barcodes.
@@ -86,7 +86,7 @@ The original output{} process was commented out and left in place as a backup, i
 position:
  	/EPI2ME_pipeline/repo_clone/main.nf
 
-### Report general aspect modification
+## Report general aspect modification
 
 The general aspect of the final html report was modified to fit better the lab's needs. Modifications were done to the report python script.
 position:
@@ -102,30 +102,41 @@ One different and independant report is now generated for each sample (barcode),
 HES and ONT logos where added at the top and bottom of the report. They are encoded as character strings in base64 in annex txt files, readable by the python script.
 position of logos in txt files: /EPI2ME_pipeline/repo_clone/bin/workflow_glue
 
-Some infographics were added in the quality control section, defined in the fastcat_report_tab() function line 68. Colors of the report were also modified are can be changed at these locations:
+Some infographics were added in the quality control section, defined in the `fastcat_report_tab()` function (line 68). Colors of the report were also modified and can be changed at the following locations:
 
-Temporary color choice for the report:
-purple_d : #6205A8
-purple_m : #BC61FF
-purple_l : #DFB4FF
+---
 
-- Main banner:
-/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/data/custom_hes.css
-#6205A8
+### Temporary color choices for the report:
+- **purple_d** : `#6205A8`  
+- **purple_m** : `#BC61FF`  
+- **purple_l** : `#DFB4FF`  
 
-- Table:
-/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/report.py
-header: #6205A8
-even lines: #F3EAF9
-hover: #D4A0FF
+---
 
-- infographics:
-/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/graphics.py
-shape: #6205A8
-text: #F3EAF9
-icon:#BC61FF
+### Main banner:
+- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/data/custom_hes.css`  
+- Color: `#6205A8`
 
-- Plots QC :
-/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/components/fastcat.py
-line 36 and 65 for read length and read quality plot respectively. 'Colors.HES_purple_d' is called, which can be modified in the _colors class defined line 48 of this document:
-/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/util.py
+---
+
+### Table styling:
+- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/report.py`  
+- Header color: `#6205A8`  
+- Even lines background: `#F3EAF9`  
+- Hover color: `#D4A0FF`
+
+---
+
+### Infographics:
+- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/graphics.py`  
+- Shape color: `#6205A8`  
+- Text color: `#F3EAF9`  
+- Icon color: `#BC61FF`
+
+---
+
+### Plots QC:
+- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/components/fastcat.py`  
+- Lines 36 and 65 for read length and read quality plots respectively.  
+- The color `Colors.HES_purple_d` is called, which can be modified in the `_colors` class defined at line 48 of this file:  
+  `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/util.py`
