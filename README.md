@@ -36,14 +36,15 @@ will provide additional information on available arguments
 
 - parameter --ref_seq will take as input the path to a reference fasta sequence and allow the workflow to perform variant calling and return a vcf table. If this argument is used with several samples (barcodes), the same reference will be applied to each barcodes.
 
-- parameter  --ref_seq_sheet takes as input the path to a text file containing a list of barcode names and the path to their corresponding reference, as in the example below:
- 
-| Barcode   | Reference Path          |
-|-----------|-------------------------|
-| barcode01 | /path/to/reference1     |
-| barcode02 | /path/to/reference2     |
-| barcode03 |                         |
-| barcode05 | /path/to/reference5     |
+- parameter --ref_seq_sheet takes as input the path to a text file containing a list of barcode names and the path to their corresponding reference, as in the example below:
+
+| Barcode   | Reference Path      |
+|-----------|---------------------|
+| barcode01 | /path/to/reference1 |
+| barcode02 | /path/to/reference2 |
+| barcode03 |                     |
+| barcode05 | /path/to/reference5 |
+
 
 note: if a barcode does not appear in the txt file, or if there is no attributed reference, variant calling is ignored for that barcode (here barcode 03 and 04 for 	instance). Barcode names and paths are tab separated.
 WARNING: If a ref_seq_sheet is given but no corresponding sample ID is found, report will not be generated.
