@@ -65,7 +65,7 @@ This function takes as input the fasta file and the annotation bed file of a sam
 
 ## Variant calling process
 
-Four processes were added in main.nf (for variant calling and VCF filtering with Sniffles and Medaka) and are called in the workflow pipeline { } part.If neither --ref_seq_sheet or --ref_seq is used, the process is not called and variant calling does not happen (but a path channel is still generated, pointing to "$projectDir/data/OPTIONAL_FILE" to avoid the workflow to stop.
+Four processes were added in main.nf (for variant calling and VCF filtering with Sniffles and Medaka) and are called in the workflow pipeline { } part. If neither --ref_seq_sheet or --ref_seq is used, the process is not called and variant calling does not happen (but a path channel is still generated, pointing to "$projectDir/data/OPTIONAL_FILE" to avoid the workflow to stop.
 
 position:
  	/EPI2ME_pipeline/repo_clone/main.nf
@@ -81,7 +81,6 @@ position:
 
 The output{} process was modified to create a subdirectory for each barcode and generate there only .gbk / .fasta / .html and .vcf files
 All other files are generated in an annex subdirectory called "other", with all barcodes.
-The original output{} process was commented out and left in place as a backup, if needed.
 
 position:
  	/EPI2ME_pipeline/repo_clone/main.nf
@@ -97,46 +96,5 @@ Text can be simply added or modified in the main() part using section.markdown("
  								This is an exemple of text that would then appear in the report
  							    """)
 
-One different and independant report is now generated for each sample (barcode), reordering elements in the for loop line 160. The report now consists of the following sections: Assembly, Annotation table, Quality control, Variant calling (if a reference was given) and a general information part. An if-else statement was introduced lines 170 and 294 to generate a different record in case of a failed analysis, showing only the quality control section.
+One different and independant report is now generated for each sample (barcode), reordering elements. The report now consists of the following sections: Assembly, Annotation table, Variant Calling (if a reference was provided), Quality control and a general information part. A different report is generated in case of a failed analysis, showing only the quality control section.
 
-HES and ONT logos where added at the top and bottom of the report. They are encoded as character strings in base64 in annex txt files, readable by the python script.
-position of logos in txt files: /EPI2ME_pipeline/repo_clone/bin/workflow_glue
-
-Some infographics were added in the quality control section, defined in the `fastcat_report_tab()` function (line 68). Colors of the report were also modified and can be changed at the following locations:
-
----
-
-### Temporary color choices for the report:
-- **purple_d** : `#6205A8`  
-- **purple_m** : `#BC61FF`  
-- **purple_l** : `#DFB4FF`  
-
----
-
-### Main banner:
-- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/data/custom_hes.css`  
-- Color: `#6205A8`
-
----
-
-### Table styling:
-- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/report.py`  
-- Header color: `#6205A8`  
-- Even lines background: `#F3EAF9`  
-- Hover color: `#D4A0FF`
-
----
-
-### Infographics:
-- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/graphics.py`  
-- Shape color: `#6205A8`  
-- Text color: `#F3EAF9`  
-- Icon color: `#BC61FF`
-
----
-
-### Plots QC:
-- File: `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/components/fastcat.py`  
-- Lines 36 and 65 for read length and read quality plots respectively.  
-- The color `Colors.HES_purple_d` is called, which can be modified in the `_colors` class defined at line 48 of this file:  
-  `/EPI2ME_pipeline/repo_clone/bin/workflow_glue/aplanat_local/util.py`
